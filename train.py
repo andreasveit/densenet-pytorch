@@ -72,8 +72,6 @@ def main():
             ])
     else:
         transform_train = transforms.Compose([
-            transforms.RandomCrop(32, padding=4),
-            transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
             normalize,
             ])
