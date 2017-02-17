@@ -11,9 +11,7 @@ class BasicBlock(nn.Module):
         self.relu = nn.ReLU(inplace=True)
         self.conv1 = nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=1,
                                padding=1, bias=False)
-        # required dropout between conv and torch.cat() due to cuDNN issue
-        # TODO: remove hot fix once pytorch update is released
-        self.droprate = 1e-7 if dropRate == 0 else dropRate
+        self.droprate = dropRate
     def forward(self, x):
         out = self.conv1(self.relu(self.bn1(x)))
         if self.droprate > 0:
@@ -31,9 +29,7 @@ class BottleneckBlock(nn.Module):
         self.bn2 = nn.BatchNorm2d(inter_planes)
         self.conv2 = nn.Conv2d(inter_planes, out_planes, kernel_size=3, stride=1,
                                padding=1, bias=False)
-        # required dropout between conv and torch.cat() due to cuDNN issue
-        # TODO: remove hot fix once pytorch update is released
-        self.droprate = 1e-7 if dropRate == 0 else dropRate
+        self.droprate = dropRate
     def forward(self, x):
         out = self.conv1(self.relu(self.bn1(x)))
         if self.droprate > 0:
@@ -50,9 +46,7 @@ class TransitionBlock(nn.Module):
         self.relu = nn.ReLU(inplace=True)
         self.conv1 = nn.Conv2d(in_planes, out_planes, kernel_size=1, stride=1,
                                padding=0, bias=False)
-        # required dropout between conv and torch.cat() due to cuDNN issue
-        # TODO: remove hot fix once pytorch update is released
-        self.droprate = 1e-7 if dropRate == 0 else dropRate
+        self.droprate = dropRate
     def forward(self, x):
         out = self.conv1(self.relu(self.bn1(x)))
         if self.droprate > 0:

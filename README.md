@@ -38,10 +38,18 @@ Example training curves for DenseNet-BC-100-12 (dark blue) and DenseNet-40-12 (l
 
 ![Training Curves](images/Fig4.png)
 
-### Hot Fix for PyTorch issue of grad_output of cuDNN convolution
-The current `pip` version (0.1.8) of PyTorch has an issue with the grad_output of cuDNN convolutions followed by a `torch.cat`. A [fix](https://github.com/pytorch/pytorch/pull/708) has been merged with the PyTorch master branch on Feb 9th 2017. 
+### Dependencies
+* [PyTorch](http://pytorch.org/) 0.1.9 (Feb 17th 2017)
 
-This implementation includes a [hot fix](https://github.com/andreasveit/densenet-pytorch/blob/master/densenet.py#L16) to be compatible with the current PyTorch version. The hot fix includes a dummy operation (dropout with droprate 1e-7) between `conv` and `cat` laeyers. The fix will be removed once the above mentioned pull request becomes part of the next release.
+optional:
+* [tensorboard_logger](https://github.com/TeamHG-Memex/tensorboard_logger)
+
+### Hot Fix for issue with older PyTorch versions of grad_output of cuDNN convolution
+__UPDATE__: The new version 0.1.9 of PyTorch has been released. Make sure you have the newest version of [PyTorch](http://pytorch.org/) installed. 
+
+The `pip` version (0.1.8) of PyTorch has an issue with the grad_output of cuDNN convolutions followed by a `torch.cat`. A [fix](https://github.com/pytorch/pytorch/pull/708) has been merged with the PyTorch master branch on Feb 9th 2017. 
+
+As a hot fix to be compatible with older PyTorch versions, include a dummy operation (dropout with droprate 1e-7) between `conv` and `cat` laeyers.
 
 ### Cite
 If you use DenseNets in your work, please cite the original paper as:
