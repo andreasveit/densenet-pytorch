@@ -6,7 +6,7 @@ The detault setting for this repo is a DenseNet-BC (with bottleneck layers and c
 
 The [Official torch implementaion](https://github.com/liuzhuang13/DenseNet) contains further links to implementations in other frameworks.
 
-Example usage with optional arguments for different hyperparameters (DenseNet-40-12):
+Example usage with optional arguments for different hyperparameters (e.g., DenseNet-40-12):
 ```sh
 $ python train.py --layers 40 --growth 12 --no-bottleneck --reduce 1.0 --name DenseNet-40-12
 ```
@@ -18,7 +18,7 @@ $ python train.py --layers 40 --growth 12 --no-bottleneck --reduce 1.0 --name De
 
 The improvements in accuracy per parameter are illustrated in their results on ImageNet (Figure 3). 
 
-<img src="https://github.com/andreasveit/densenet-pytorch/blob/master/images/Fig3.png?raw=true" width="400">
+<img src="https://github.com/andreasveit/densenet-pytorch/blob/master/images/FIg3.png?raw=true" width="400">
 
 ## This implementation
 The training code in train.py trains a DenseNet on CIFAR 10 or 100. To train on ImageNet, densenet.py can be copied into the [PyTorch example for training ResNets on Imagenet](https://github.com/pytorch/examples/tree/master/imagenet), upon which this repo is based. Note that for ImageNet the model contains four dense blocks.
