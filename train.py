@@ -93,6 +93,10 @@ def main():
     model = dn.DenseNet3(args.layers, 10, args.growth, reduction=args.reduce,
                          bottleneck=args.bottleneck, dropRate=args.droprate)
     
+    # get the number of model parameters
+    print('Number of model parameters: {}'.format(
+        sum([p.data.nelement() for p in model.parameters()])))
+    
     # for training on multiple GPUs. 
     # Use CUDA_VISIBLE_DEVICES=0,1 to specify which GPUs to use
     # model = torch.nn.DataParallel(model).cuda()
