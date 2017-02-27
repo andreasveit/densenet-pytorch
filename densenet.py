@@ -82,12 +82,12 @@ class DenseNet3(nn.Module):
         # 1st block
         self.block1 = DenseBlock(n, in_planes, growth_rate, block, dropRate)
         in_planes = int(in_planes+n*growth_rate)
-        self.trans1 = TransitionBlock(in_planes, int(math.floor(in_planes*reduction)), dropRate=0.0)
+        self.trans1 = TransitionBlock(in_planes, int(math.floor(in_planes*reduction)), dropRate=dropRate)
         in_planes = int(math.floor(in_planes*reduction))
         # 2nd block
         self.block2 = DenseBlock(n, in_planes, growth_rate, block, dropRate)
         in_planes = int(in_planes+n*growth_rate)
-        self.trans2 = TransitionBlock(in_planes, int(math.floor(in_planes*reduction)), dropRate=0.0)
+        self.trans2 = TransitionBlock(in_planes, int(math.floor(in_planes*reduction)), dropRate=dropRate)
         in_planes = int(math.floor(in_planes*reduction))
         # 3rd block
         self.block3 = DenseBlock(n, in_planes, growth_rate, block, dropRate)
