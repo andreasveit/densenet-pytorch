@@ -121,6 +121,7 @@ def main():
     criterion = nn.CrossEntropyLoss().cuda()
     optimizer = torch.optim.SGD(model.parameters(), args.lr,
                                 momentum=args.momentum,
+                                nesterov=True,
                                 weight_decay=args.weight_decay)
 
     for epoch in range(args.start_epoch, args.epochs):
