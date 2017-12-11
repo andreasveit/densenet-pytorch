@@ -76,6 +76,7 @@ class DenseNet3(nn.Module):
             block = BottleneckBlock
         else:
             block = BasicBlock
+        n = int(n)
         # 1st conv before any dense block
         self.conv1 = nn.Conv2d(3, in_planes, kernel_size=3, stride=1,
                                padding=1, bias=False)
